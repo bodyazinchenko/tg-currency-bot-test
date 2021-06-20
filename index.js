@@ -4,7 +4,7 @@ const cc = require('currency-codes');
 
 // Init .env params
 require('dotenv').config();
-const { BOT_TOKEN } = process.env;
+const { BOT_TOKEN, URL, PORT = 5000 } = process.env;
 
 
 const bot = new Telegraf(BOT_TOKEN);
@@ -44,4 +44,6 @@ bot.hears(/^[A-Z]+$/i, async (ctx) => {
   }
 });
 
-bot.launch().then(() => console.log('launched heroku bot')).catch(console.error);
+bot.telegram.setWebhook(`${URL}/bot${BOT_TOKEN}`);
+bot.startWebhook(`/bot${BOT_TOKEN}}`, null, PORT);
+console.log('started with webhook');
