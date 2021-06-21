@@ -46,6 +46,6 @@ bot.hears(/^[A-Z]+$/i, async (ctx) => {
   }
 });
 
-bot.telegram.setWebhook(`${URL}/bot${BOT_TOKEN}`);
-bot.startWebhook(`/bot${BOT_TOKEN}}`, null, PORT);
+bot.telegram.setWebhook(`${URL}/secret-path`);
+bot.startWebhook(`/secret-path`, null, PORT);
 console.log('started with webhook');
