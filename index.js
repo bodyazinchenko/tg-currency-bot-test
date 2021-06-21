@@ -5,9 +5,6 @@ const cc = require('currency-codes');
 // Init .env params
 require('dotenv').config();
 const { BOT_TOKEN, URL } = process.env;
-console.log('URL', URL)
-console.log('PORT', PORT)
-
 
 const bot = new Telegraf(BOT_TOKEN);
 
