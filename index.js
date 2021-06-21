@@ -4,7 +4,7 @@ const cc = require('currency-codes');
 
 // Init .env params
 require('dotenv').config();
-const { BOT_TOKEN, URL } = process.env;
+const { BOT_TOKEN, URL, PORT = 5000 } = process.env;
 
 
 const bot = new Telegraf(BOT_TOKEN, {
@@ -48,6 +48,11 @@ bot.hears(/^[A-Z]+$/i, async (ctx) => {
   }
 });
 
-bot.telegram.setWebhook(`${URL}/bot${BOT_TOKEN}`);
-// bot.startWebhook(`/bot${BOT_TOKEN}}`, null, PORT);
-console.log('without startWebhook')
+bot.launch({
+  webhook:{
+    domain: URL,
+    port: PORT,
+  }
+})
+
+console.log('with bot launch')
