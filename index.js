@@ -4,7 +4,7 @@ const cc = require('currency-codes');
 
 // Init .env params
 require('dotenv').config();
-const { BOT_TOKEN, URL, PORT = 5000 } = process.env;
+const { BOT_TOKEN, URL } = process.env;
 console.log('URL', URL)
 console.log('PORT', PORT)
 
@@ -47,5 +47,5 @@ bot.hears(/^[A-Z]+$/i, async (ctx) => {
 });
 
 bot.telegram.setWebhook(`${URL}/secret-path`);
-bot.startWebhook(`/secret-path`, null, PORT);
+bot.startWebhook(`/secret-path`, null, 5000);
 console.log('started with webhook');
